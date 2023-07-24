@@ -1,9 +1,11 @@
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { getAllUser } from "../../redux/slices/nguoiDungSlice";
 import { nguoiDungServ } from "../../services/nguoiDungServices";
 
 const FormAddUser = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       taiKhoan: "",
@@ -16,16 +18,15 @@ const FormAddUser = () => {
     },
     onSubmit: async (values) => {
       console.log(values);
-      const res = await nguoiDungServ.addUser(values);
+      // const res = await nguoiDungServ.addUser(values);
       //   nguoiDungServ.addUser(values).then((res) => {
       //     dispatchEvent(getAllUser()).then;
       //   });
-      console.log(res);
+      // console.log(res);
       try {
         console.log(values);
         const res = await nguoiDungServ.addUser(values);
-        dispatchEvent(getAllUser());
-
+        dispatch(getAllUser());
         console.log(res);
       } catch (err) {
         console.log(err);
