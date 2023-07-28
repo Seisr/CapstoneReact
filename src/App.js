@@ -7,6 +7,7 @@ import Page404 from "./pages/Page404/Page404";
 import UserManagement from "./pages/UserManagement/UserManagement";
 import AdminTemplate from "./template/AdminTemplate";
 import UserTemplate from "./template/UserTemplate";
+import FilmManagement from "./pages/FilmsManagement/FilmManagement";
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +17,8 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
         </Route>
         <Route path="/admin" element={<AdminTemplate />}>
-          <Route index element={<UserManagement />}></Route>
+          <Route path="/admin/user" element={<UserManagement />} />
+          <Route path="/admin/movie" element={<FilmManagement />} />
         </Route>
         <Route path="/admin-login" element={<LoginAdmin />}></Route>
         <Route path="*" element={<Page404 />}></Route>

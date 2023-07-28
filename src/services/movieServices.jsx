@@ -4,7 +4,13 @@ export const movieServ = {
   getAllBanner: () => {
     return https.get("/api/QuanLyPhim/LayDanhSachBanner");
   },
-  getAllMovie: () => {
-    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09");
+  getAllMovie: (tenPhim = "") => {
+    if (tenPhim.trim() !== "") {
+      return https.get(
+        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09&tenPhim=${tenPhim}`
+      );
+    } else {
+      return https.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09`);
+    }
   },
 };
