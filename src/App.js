@@ -8,6 +8,7 @@ import UserManagement from "./pages/UserManagement/UserManagement";
 import AdminTemplate from "./template/AdminTemplate";
 import UserTemplate from "./template/UserTemplate";
 import FilmManagement from "./pages/FilmsManagement/FilmManagement";
+import AddPhimPages from "./pages/FilmsManagement/AddPhimPages";
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/admin" element={<AdminTemplate />}>
           <Route path="/admin/user" element={<UserManagement />} />
           <Route path="/admin/movie" element={<FilmManagement />} />
+          <Route path="/admin/addphim" element={<AddPhimPages />} />
         </Route>
         <Route path="/admin-login" element={<LoginAdmin />}></Route>
         <Route path="*" element={<Page404 />}></Route>

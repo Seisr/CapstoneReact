@@ -17,19 +17,19 @@ const FormAddUser = () => {
       hoTen: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
+      // console.log(values);
       // const res = await nguoiDungServ.addUser(values);
       //   nguoiDungServ.addUser(values).then((res) => {
       //     dispatchEvent(getAllUser()).then;
       //   });
       // console.log(res);
       try {
-        console.log(values);
+        // console.log(values);
         const res = await nguoiDungServ.addUser(values);
         dispatch(getAllUser());
-        console.log(res);
+        // console.log(res);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
 
       // xử lí gửi dữ liệu lên server

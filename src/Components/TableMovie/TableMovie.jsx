@@ -4,8 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AudioOutlined, SearchOutlined } from "@ant-design/icons";
 import { getAllMovie } from "../../redux/slices/movieSlice";
-
-const { Search } = Input;
+import { NavLink } from "react-router-dom";
 
 const TableMovie = () => {
   const dispatch = useDispatch();
@@ -13,19 +12,6 @@ const TableMovie = () => {
     return state.movies;
   });
   console.log(movies);
-
-  // Search input
-  const suffix = (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: "#1677ff",
-      }}
-    />
-  );
-  const onSearch = (value) => {
-    dispatch(getAllMovie(value));
-  };
 
   //table movie
   const columns = [
@@ -43,7 +29,7 @@ const TableMovie = () => {
       dataIndex: "hinhAnh",
       key: "hinhAnh",
       render: (text, movies) => {
-        return <img src={movies.hinhAnh} alt={movies.tenPhim} width={500} />;
+        return <img src={movies.hinhAnh} alt={movies.tenPhim} width={200} />;
       },
     },
     {
@@ -52,6 +38,7 @@ const TableMovie = () => {
       key: "tenPhim",
       width: 250,
     },
+
     {
       title: "Mô Tả",
       dataIndex: "moTa",
@@ -98,6 +85,9 @@ const TableMovie = () => {
   //   dữ liệu table
   return (
     <div>
+      <button className="px-3 py-2 mb-5 bg-blue-500 rounded-lg">
+        <NavLink to="/admin/addphim">Thêm Phim</NavLink>
+      </button>
       <input
         size="large"
         className="border-2 mb-5 w-full px-2 py-2"
@@ -108,7 +98,12 @@ const TableMovie = () => {
       >
         {}
       </input>
-      <Table columns={columns} dataSource={movies} />;
+      <Table
+        className="overflow-x-scroll"
+        columns={columns}
+        dataSource={movies}
+      />
+      ;
     </div>
   );
 };

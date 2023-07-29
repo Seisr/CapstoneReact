@@ -12,6 +12,14 @@ export const getAllMovie = createAsyncThunk(
     return res.data.content;
   }
 );
+export const themPhim = createAsyncThunk(
+  "movies/themPhim",
+  async (formData) => {
+    const res = await movieServ.themPhim(formData);
+    console.log(res);
+    return res;
+  }
+);
 // lần đầu tiên vào web, store sẽ dc khởi tạo
 const initialState = {
   movies: [],
@@ -25,11 +33,17 @@ export const movieSlice = createSlice({
   // extraReducer giúp tách biệt các logic bất đồng bộ ra khỏi reducer vì khi xử lý async có nhiều TH xảy ra
   extraReducers: (builder) => {
     // khi xử lý -> trong hàm có 3  method tương ứng fulfiled,pending,reject
-    builder.addCase(getAllMovie.fulfilled, (state, action) => {
-      console.log(action.payload);
-      // trong action, attri payload sẽ chứa các attri trả về từ hàm createAsyncThunk
-      state.movies = action.payload;
-    });
+    builder
+      .addCase(getAllMovie.fulfilled, (state, action) => {
+        console.log(action.payload);
+        // trong action, attri payload sẽ chứa các attri trả về từ hàm createAsyncThunk
+        state.movies = action.payload;
+      })
+      .addCase(themPhim.fulfilled, (state, action) => {
+        console.log(action.payload);
+        const newMovie = action.payload.data.content;
+        state.movies.push(newMovie);
+      });
   },
 });
 

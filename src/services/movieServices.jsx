@@ -7,10 +7,13 @@ export const movieServ = {
   getAllMovie: (tenPhim = "") => {
     if (tenPhim.trim() !== "") {
       return https.get(
-        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09&tenPhim=${tenPhim}`
+        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP06&tenPhim=${tenPhim}`
       );
     } else {
-      return https.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09`);
+      return https.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP06`);
     }
+  },
+  themPhim: (formData) => {
+    return https.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData);
   },
 };

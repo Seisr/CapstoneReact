@@ -17,13 +17,13 @@ const FormLogin = () => {
       matKhau: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
       // xử lí gửi dữ liệu lên server
       nguoiDungServ
         .dangNhap(values)
         .then((result) => {
           // login thành công -> lưu local
-          console.log(result);
+          // console.log(result);
           messageApi.success("Đăng nhập thành công");
           // gọi data thành công -> gửi data lên redux
           dispatch(setDuLieuHoten);
@@ -33,7 +33,7 @@ const FormLogin = () => {
           }, [1000]);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           messageApi.error(err.response.data.content);
         });
     },
