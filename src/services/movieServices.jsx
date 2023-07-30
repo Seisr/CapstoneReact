@@ -16,4 +16,7 @@ export const movieServ = {
   themPhim: (formData) => {
     return https.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData);
   },
+  xoaPhim: (maPhim) => {
+    return https.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
+  },
 };

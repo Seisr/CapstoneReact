@@ -1,10 +1,11 @@
-import { Space, Table, Input } from "antd";
+import { Space, Table, Input, Popconfirm, message } from "antd";
 import React, { Fragment, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AudioOutlined, SearchOutlined } from "@ant-design/icons";
 import { getAllMovie } from "../../redux/slices/movieSlice";
 import { NavLink } from "react-router-dom";
+import { movieServ } from "../../services/movieServices";
 
 const TableMovie = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,25 @@ const TableMovie = () => {
     return state.movies;
   });
   console.log(movies);
+  //Popconfirm
+
+  const confirm = (maPhim) => {
+    console.log(maPhim);
+    movieServ
+      .xoaPhim(maPhim)
+      .then((res) => {
+        message.success("Xóa Thành Công");
+        dispatch(getAllMovie());
+      })
+      .catch((err) => {
+        console.log(err);
+        message.error("Xóa Không Thành Công");
+      });
+  };
+  const cancel = (e) => {
+    // console.log(e);
+    message.error("Xóa Không Thành Công");
+  };
 
   //table movie
   const columns = [
@@ -56,25 +76,23 @@ const TableMovie = () => {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <button
-            className="py-2 px-5 bg-red-600 text-white rounded-lg hover:bg-red-700 duration-500"
-            // sẽ sửa lại thêm 1 popconfirm vào để hỏi ng dùng có muốn xóa hay ko và thêm thông báo khi xóa thành công cũng như thất bại
-            // onClick={() => {
-            //   nguoiDungServ
-            //     .deleteUser(record.taiKhoan)
-            //     .then((res) => {
-            //       alert("Xóa thành công");
-            //       // getAllUserThunk
-            //       dispatch(getAllUser());
-            //     })
-            //     .catch((err) => {
-            //       console.log(err);
-            //       alert("Có vấn đề");
-            //     });
-            // }}
+          <Popconfirm
+            title="Xóa Phim Có Mã Phim"
+            description={record.maPhim}
+            onConfirm={() => {
+              confirm(record.maPhim);
+            }}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
           >
-            Xóa
-          </button>
+            <button
+              className="py-2 px-5 bg-red-600 text-white rounded-lg hover:bg-red-700 duration-500"
+              // sẽ sửa lại thêm 1 popconfirm vào để hỏi ng dùng có muốn xóa hay ko và thêm thông báo khi xóa thành công cũng như thất bại
+            >
+              Xóa
+            </button>
+          </Popconfirm>
           <button className="py-2 px-5 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 duration-500">
             Sửa
           </button>
