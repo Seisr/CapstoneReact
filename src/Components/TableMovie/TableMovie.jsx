@@ -12,11 +12,11 @@ const TableMovie = () => {
   const { movies } = useSelector((state) => {
     return state.movies;
   });
-  console.log(movies);
+  // console.log(movies);
   //Popconfirm
 
   const confirm = (maPhim) => {
-    console.log(maPhim);
+    // console.log(maPhim);
     movieServ
       .xoaPhim(maPhim)
       .then((res) => {
@@ -24,7 +24,7 @@ const TableMovie = () => {
         dispatch(getAllMovie());
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         message.error("Xóa Không Thành Công");
       });
   };

@@ -38,9 +38,9 @@ const EditPhim = () => {
   const { thongTinPhimEdit } = useSelector((state) => {
     return state.movies;
   });
-  console.log(thongTinPhimEdit);
+  // console.log(thongTinPhimEdit);
   let maPhim = params.id;
-  console.log(maPhim);
+  // console.log(maPhim);
   //goi api laythongtinphim
   useEffect(() => {
     dispatch(editPhim(maPhim));
@@ -68,7 +68,7 @@ const EditPhim = () => {
     //   moTa: yup.string().required("Mô tả không được để trống"),
     // }),
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
       let formData = new FormData();
       for (let key in values) {
         if (key !== "hinhAnh") {
@@ -83,12 +83,12 @@ const EditPhim = () => {
       movieServ
         .capNhatPhim(formData)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           message.success("Cập Nhật Thành công");
           dispatch(getAllMovie());
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           message.error(err.response.data.message);
         });
       formik.resetForm();

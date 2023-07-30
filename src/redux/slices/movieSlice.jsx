@@ -7,7 +7,7 @@ export const getAllMovie = createAsyncThunk(
   "movies/getAllMovie",
   async (tenPhim = "") => {
     const res = await movieServ.getAllMovie(tenPhim);
-    console.log(res);
+    // console.log(res);
     // sẽ return về giá trị muốn store lưu trữ
     return res.data.content;
   }
@@ -17,14 +17,14 @@ export const themPhim = createAsyncThunk(
   "movies/themPhim",
   async (formData) => {
     const res = await movieServ.themPhim(formData);
-    console.log(res);
+    // console.log(res);
     return res;
   }
 );
 //lấy thông tin phim cần edit
 export const editPhim = createAsyncThunk("movies/editPhim", async (maPhim) => {
   const res = await movieServ.layThongTinPhimEdit(maPhim);
-  console.log(res.data.content);
+  // console.log(res.data.content);
   return res.data.content;
 });
 // lần đầu tiên vào web, store sẽ dc khởi tạo
@@ -53,7 +53,7 @@ export const movieSlice = createSlice({
         state.movies.push(newMovie);
       })
       .addCase(editPhim.fulfilled, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.thongTinPhimEdit = action.payload;
       });
   },
