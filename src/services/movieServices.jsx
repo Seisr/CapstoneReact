@@ -19,4 +19,10 @@ export const movieServ = {
   xoaPhim: (maPhim) => {
     return https.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   },
+  layThongTinPhimEdit: (maPhim) => {
+    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
+  },
+  capNhatPhim: (formData) => {
+    return https.post(`/api/QuanLyPhim/CapNhatPhimUpload`, formData);
+  },
 };
