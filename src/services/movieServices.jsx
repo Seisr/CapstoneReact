@@ -7,11 +7,19 @@ export const movieServ = {
   getAllMovie: (tenPhim = "") => {
     if (tenPhim.trim() !== "") {
       return https.get(
-        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP06&tenPhim=${tenPhim}`
+        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP07&tenPhim=${tenPhim}`
       );
     } else {
-      return https.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP06`);
+      return https.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP07`);
     }
+  },
+  getShowtime: (maPhim) => {
+    return https.get(
+      `/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`
+    );
+  },
+  getMovieDetail: (maPhim) => {
+    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
   },
   themPhim: (formData) => {
     return https.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData);

@@ -4,8 +4,12 @@ export const nguoiDungServ = {
   dangNhap: (data) => {
     return https.post("api/QuanLyNguoiDung/DangNhap", data);
   },
+  register1: (data) => {
+    console.log(data);
+    return https.post("/api/QuanLyNguoiDung/DangKy", data);
+  },
   getAllUser: () => {
-    return https.get("/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP09");
+    return https.get("/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP07");
   },
   deleteUser: (taiKhoan) => {
     return https.delete(

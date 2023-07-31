@@ -10,6 +10,9 @@ import UserTemplate from "./template/UserTemplate";
 import FilmManagement from "./pages/FilmsManagement/FilmManagement";
 import AddPhimPages from "./pages/FilmsManagement/AddPhimPages";
 import EditPhimPages from "./pages/FilmsManagement/EditPhimPages";
+import MovieDetail1 from "./pages/MovieDetail1/MovieDetail1";
+import TicketBook from "./Components/TicketBook/TicketBook";
+import Register from "./pages/Register/Register";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +20,10 @@ function App() {
         <Route path="/" element={<UserTemplate />}>
           <Route index element={<HomePage />} />
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/detail/:maPhim" element={<MovieDetail1 />}>
+            <Route path="booking/:maLichChieu" element={<TicketBook />} />
+          </Route>
+          <Route path="/register" element={<Register />} />
         </Route>
         <Route path="/admin" element={<AdminTemplate />}>
           <Route key={1} path="/admin/user" element={<UserManagement />} />

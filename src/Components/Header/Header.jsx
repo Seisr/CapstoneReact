@@ -30,7 +30,7 @@ const Header = () => {
                 <NavLink to="/login" className="text-white text-xl">
                   <i className="fa-regular fa-user m-2"></i>Đăng nhập
                 </NavLink>
-                <NavLink to="/login" className="text-white text-xl">
+                <NavLink to="/register" className="text-white text-xl">
                   <i className="fa-regular fa-user m-2"></i>Đăng ký
                 </NavLink>
               </>
