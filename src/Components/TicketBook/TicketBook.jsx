@@ -25,7 +25,7 @@ const TicketBook = () => {
   return (
     <div className="flex mt-10">
       <div className="w-8/12">
-        <Seats seatList={seatList} />
+        <Seat seatList={seatList} />
         <ul class="showcase">
           <li>
             <div class="seat"></div>
